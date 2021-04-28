@@ -17,9 +17,9 @@ variable "vm" {
 	type = map(string)
 	default = {
 		admin 			= "tdsan"
-		rg 			= "it-az-rg"
+		rg 				= "it-az-rg"
 		location 		= "eastus"
-		vnet                    = "itots-vnet"
+		vnet            = "itots-vnet"
 		subnet 			= "itots-subnet"
 		cidr 			= "10.10.0.0/16"
 		sap 			= "45.37.66.254"
@@ -53,11 +53,11 @@ resource "azurerm_resource_group" "rg" {
 
 # Create Virtual Network
 resource "azurerm_virtual_network" "vnet" {
-	name 				= "${var.vm.rg}-vnet"
+	name 					= "${var.vm.rg}-vnet"
 	address_space 			= [var.vm.cidr]
-	location 			= azurerm_resource_group.rg.location
-	resource_group_name 		= azurerm_resource_group.rg.name
-	vm_protection_enabled		= true
+	location 				= azurerm_resource_group.rg.location
+	resource_group_name 	= azurerm_resource_group.rg.name
+	vm_protection_enabled	= true
 }
 
 # Create Subnet from vNet
